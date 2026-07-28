@@ -300,6 +300,230 @@ body.modal-open{overflow:hidden;touch-action:none}
 .firebase-login-card .btn{width:100%}
 .firebase-login-error{margin-top:12px;color:var(--red);font-size:12px;font-weight:800;line-height:1.4}
 </style>
+
+<!-- tools_v33_mobile_combobox_height_fix.css: mobile only, normalize select/combobox height to match text inputs. PC untouched. -->
+<style id="toolsV33MobileComboboxHeightFix">
+@media(max-width:767px){
+  /* Fix mobile combobox/select being shorter than normal text inputs. PC untouched. */
+  select.select,
+  select.input,
+  #view-transactions select,
+  #modalBg select,
+  .modal select,
+  .modal-v2 select,
+  .dm-field-v2 select,
+  .dm-field-v5 select{
+    height:38px!important;
+    min-height:38px!important;
+    line-height:38px!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+    padding-left:11px!important;
+    padding-right:30px!important;
+    border-radius:12px!important;
+    font-size:12px!important;
+    box-sizing:border-box!important;
+    display:block!important;
+    -webkit-appearance:none!important;
+    appearance:none!important;
+    background-color:var(--card)!important;
+    background-image:linear-gradient(45deg,transparent 50%,#64748b 50%),linear-gradient(135deg,#64748b 50%,transparent 50%)!important;
+    background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%!important;
+    background-size:5px 5px,5px 5px!important;
+    background-repeat:no-repeat!important;
+  }
+
+  /* Keep date/text inputs aligned with combobox height in mobile transaction header and modal forms. */
+  input.input,
+  textarea.textarea{
+    box-sizing:border-box!important;
+  }
+
+  /* Transaction header specific: make search, type, range visually equal height. */
+  #view-transactions #txnSearch,
+  #view-transactions #txnType,
+  #view-transactions #txnRange{
+    height:38px!important;
+    min-height:38px!important;
+  }
+
+  /* Form comboboxes: Loai lon, Nhom danh muc, Hang muc con. */
+  #fLoai,
+  #fNhom,
+  #fCon{
+    height:36px!important;
+    min-height:36px!important;
+    line-height:36px!important;
+  }
+}
+</style>
+
+
+<!-- tools_v34_mobile_pwa_optimized.css/js: mobile-only PWA input/select/calendar/safe-area fixes. PC untouched. -->
+<style id="toolsV34MobilePwaOptimizedCss">
+@media(max-width:767px){
+  /* 1) Prevent iOS Safari auto-zoom on focus: actual form font-size must be >=16px. */
+  input,
+  select,
+  textarea,
+  .input,
+  .select,
+  .textarea,
+  #view-transactions #txnSearch,
+  #view-transactions #txnType,
+  #view-transactions #txnRange,
+  #modalBg input,
+  #modalBg select,
+  #modalBg textarea,
+  .modal input,
+  .modal select,
+  .modal textarea,
+  .modal-v2 input,
+  .modal-v2 select,
+  .modal-v2 textarea{
+    font-size:16px!important;
+    box-sizing:border-box!important;
+  }
+
+  /* 2) Keep visual height compact and equal for input + combobox. */
+  input.input,
+  select.select,
+  textarea.textarea,
+  #view-transactions #txnSearch,
+  #view-transactions #txnType,
+  #view-transactions #txnRange,
+  #txnFromDate,
+  #txnToDate{
+    min-height:40px!important;
+    height:40px!important;
+    border-radius:12px!important;
+  }
+  select.select,
+  select.input,
+  #view-transactions select,
+  #modalBg select,
+  .modal select,
+  .modal-v2 select,
+  .dm-field-v2 select,
+  .dm-field-v5 select{
+    line-height:40px!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+    padding-left:11px!important;
+    padding-right:32px!important;
+    min-height:40px!important;
+    height:40px!important;
+    -webkit-appearance:none!important;
+    appearance:none!important;
+    background-color:var(--card)!important;
+    background-image:linear-gradient(45deg,transparent 50%,#64748b 50%),linear-gradient(135deg,#64748b 50%,transparent 50%)!important;
+    background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%!important;
+    background-size:5px 5px,5px 5px!important;
+    background-repeat:no-repeat!important;
+  }
+  #fLoai,#fNhom,#fCon{
+    min-height:40px!important;
+    height:40px!important;
+    line-height:40px!important;
+  }
+
+  /* 3) Fix mobile calendar icon: keep the real date input clickable instead of pointer-events:none. */
+  .date-picker-wrap-v19{
+    position:relative!important;
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+  .date-picker-wrap-v19 input.input{
+    width:100%!important;
+    min-width:0!important;
+    padding-right:42px!important;
+  }
+  .date-picker-btn-v19{
+    position:absolute!important;
+    right:6px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    width:30px!important;
+    height:30px!important;
+    z-index:2!important;
+    pointer-events:auto!important;
+  }
+  .hidden-date-v19{
+    position:absolute!important;
+    right:6px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    width:30px!important;
+    height:30px!important;
+    opacity:.01!important;
+    pointer-events:auto!important;
+    z-index:4!important;
+    display:block!important;
+    -webkit-appearance:auto!important;
+    appearance:auto!important;
+  }
+
+  /* 4) PWA safe-area support for iPhone Home Indicator / Dynamic Island. */
+  body{
+    padding-bottom:calc(var(--bottom) + env(safe-area-inset-bottom))!important;
+  }
+  .mobile-app-header{
+    padding-top:calc(12px + env(safe-area-inset-top))!important;
+  }
+  .bottom-nav{
+    height:calc(76px + env(safe-area-inset-bottom))!important;
+    padding-bottom:calc(7px + env(safe-area-inset-bottom))!important;
+  }
+  .fab{
+    bottom:calc(88px + env(safe-area-inset-bottom))!important;
+  }
+  .modal-actions{
+    padding-bottom:calc(16px + env(safe-area-inset-bottom))!important;
+  }
+}
+</style>
+<script id="toolsV34MobilePwaOptimizedJs">
+(function(){
+  const isMobile=()=>window.matchMedia&&window.matchMedia('(max-width:767px)').matches;
+  function patchDatePickerClick(){
+    if(!isMobile()) return;
+    document.querySelectorAll('.date-picker-wrap-v19').forEach(wrap=>{
+      const btn=wrap.querySelector('.date-picker-btn-v19');
+      const hidden=wrap.querySelector('.hidden-date-v19');
+      const visible=wrap.querySelector('input.input');
+      if(!btn||!hidden||btn.dataset.v34Bound==='1') return;
+      btn.dataset.v34Bound='1';
+      const openPicker=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        try{
+          hidden.focus({preventScroll:true});
+          if(typeof hidden.showPicker==='function') hidden.showPicker();
+          else hidden.click();
+        }catch(err){
+          try{ hidden.click(); }catch(_e){}
+        }
+      };
+      btn.addEventListener('click',openPicker,true);
+      btn.addEventListener('touchend',openPicker,true);
+      hidden.addEventListener('change',function(){
+        if(visible && /^\d{4}-\d{2}-\d{2}$/.test(hidden.value)){
+          const [y,m,d]=hidden.value.split('-');
+          visible.value=`${d}/${m}/${y}`;
+          visible.dispatchEvent(new Event('change',{bubbles:true}));
+          visible.dispatchEvent(new Event('input',{bubbles:true}));
+        }
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(patchDatePickerClick,700));
+  setTimeout(patchDatePickerClick,1500);
+  setTimeout(patchDatePickerClick,3000);
+  window.addEventListener('resize',()=>setTimeout(patchDatePickerClick,250));
+})();
+</script>
+
 </head>
 <body>
 <div class="app"><header class="mobile-app-header"><div class="mobile-logo"><svg class="app-logo-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 10v8.5A1.5 1.5 0 0 0 7.5 20h9A1.5 1.5 0 0 0 18 18.5V10"/><path d="M9 20v-5.5a3 3 0 0 1 6 0V20"/><path d="M8.5 11.5h7"/></svg></div><div><b>Quản lý tài sản gia đình</b><span>Theo dõi tài chính, tài sản và đầu tư</span></div></header><aside class="sidebar"><div class="brand"><div class="logo"><svg class="app-logo-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 10v8.5A1.5 1.5 0 0 0 7.5 20h9A1.5 1.5 0 0 0 18 18.5V10"/><path d="M9 20v-5.5a3 3 0 0 1 6 0V20"/><path d="M8.5 11.5h7"/></svg></div><div><h1>Tài chính gia đình</h1><p>Chi tiêu, tài sản, đầu tư</p></div></div><nav class="nav" id="desktopNav"></nav><div class="cash-card"><small>Tiền hiện có</small><b id="miniBalance">0 ₫</b><span>Tổng tiền khả dụng</span></div></aside><main class="main"><header class="topbar"><div class="title"><h2 id="pageTitle">Tổng quan</h2><p id="pageSubtitle">Theo dõi dòng tiền và tài sản gia đình trong một nơi.</p></div><div class="actions"><div class="month"><button id="prevMonth">‹</button><span id="monthDisplay">Tháng</span><button id="nextMonth">›</button></div><button class="btn btn-primary desktop-add" id="addHeaderBtn">＋ Thêm giao dịch</button></div></header>
