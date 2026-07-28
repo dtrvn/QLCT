@@ -524,6 +524,76 @@ body.modal-open{overflow:hidden;touch-action:none}
 })();
 </script>
 
+
+<!-- tools_v35_mobile_font14_optimized.css: mobile only, reduce visible form font from 16px to 14px while keeping viewport guard. PC untouched. -->
+<style id="toolsV35MobileFont14OptimizedCss">
+@media(max-width:767px){
+  input,
+  select,
+  textarea,
+  .input,
+  .select,
+  .textarea,
+  #view-transactions #txnSearch,
+  #view-transactions #txnType,
+  #view-transactions #txnRange,
+  #modalBg input,
+  #modalBg select,
+  #modalBg textarea,
+  .modal input,
+  .modal select,
+  .modal textarea,
+  .modal-v2 input,
+  .modal-v2 select,
+  .modal-v2 textarea{
+    font-size:14px!important;
+  }
+
+  select.select,
+  select.input,
+  #view-transactions select,
+  #modalBg select,
+  .modal select,
+  .modal-v2 select,
+  .dm-field-v2 select,
+  .dm-field-v5 select{
+    font-size:14px!important;
+    height:40px!important;
+    min-height:40px!important;
+    line-height:40px!important;
+  }
+
+  #fLoai,
+  #fNhom,
+  #fCon,
+  #txnSearch,
+  #txnType,
+  #txnRange,
+  #txnFromDate,
+  #txnToDate{
+    font-size:14px!important;
+  }
+}
+</style>
+<script id="toolsV35ViewportGuardJs">
+(function(){
+  function isIOS(){return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);}
+  function applyViewportGuard(){
+    if(!isIOS()) return;
+    var meta=document.querySelector('meta[name="viewport"]');
+    if(!meta){
+      meta=document.createElement('meta');
+      meta.setAttribute('name','viewport');
+      document.head.appendChild(meta);
+    }
+    var content=meta.getAttribute('content')||'width=device-width, initial-scale=1';
+    if(!/maximum-scale\s*=/.test(content)) content += ', maximum-scale=1';
+    meta.setAttribute('content', content);
+  }
+  applyViewportGuard();
+})();
+</script>
+
 </head>
 <body>
 <div class="app"><header class="mobile-app-header"><div class="mobile-logo"><svg class="app-logo-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 10v8.5A1.5 1.5 0 0 0 7.5 20h9A1.5 1.5 0 0 0 18 18.5V10"/><path d="M9 20v-5.5a3 3 0 0 1 6 0V20"/><path d="M8.5 11.5h7"/></svg></div><div><b>Quản lý tài sản gia đình</b><span>Theo dõi tài chính, tài sản và đầu tư</span></div></header><aside class="sidebar"><div class="brand"><div class="logo"><svg class="app-logo-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 10v8.5A1.5 1.5 0 0 0 7.5 20h9A1.5 1.5 0 0 0 18 18.5V10"/><path d="M9 20v-5.5a3 3 0 0 1 6 0V20"/><path d="M8.5 11.5h7"/></svg></div><div><h1>Tài chính gia đình</h1><p>Chi tiêu, tài sản, đầu tư</p></div></div><nav class="nav" id="desktopNav"></nav><div class="cash-card"><small>Tiền hiện có</small><b id="miniBalance">0 ₫</b><span>Tổng tiền khả dụng</span></div></aside><main class="main"><header class="topbar"><div class="title"><h2 id="pageTitle">Tổng quan</h2><p id="pageSubtitle">Theo dõi dòng tiền và tài sản gia đình trong một nơi.</p></div><div class="actions"><div class="month"><button id="prevMonth">‹</button><span id="monthDisplay">Tháng</span><button id="nextMonth">›</button></div><button class="btn btn-primary desktop-add" id="addHeaderBtn">＋ Thêm giao dịch</button></div></header>
